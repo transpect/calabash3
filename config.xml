@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cc:xml-calabash xmlns:cc="https://xmlcalabash.com/ns/configuration"
+   licensed="true" saxon-configuration="saxon/saxon-config.xml">
+  <!-- version="3.0"
+  verbosity="debug" -->
+  <!-- https://docs.xmlcalabash.com/userguide/current/configuration.html -->
+  <!-- saxon-config.xml takes care of the rest -->
+  <!-- you can add several calabash options here -->
+  
+  <!--<cc:xml-calabash xmlns:cc="https://xmlcalabash.com/ns/configuration"
+  licensed="true" saxon-configuration="saxon-config.xml[path to a saxon config]">-->
+    
+</cc:xml-calabash>

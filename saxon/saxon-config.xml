@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration xmlns="http://saxon.sf.net/ns/configuration"
+  edition="PE"
+  licenseFileLocation="../../saxon/saxon-license.lic"
+  label="Saxon-PE Configuration">
+  
+  <!-- example link to a Saxon license in the file system using URI 'file:' notation:
+    licenseFileLocation="file:///C:/Users/driver/Documents/Admin/Saxonica/licenses/saxon-license.lic" -->
+
+  <xslt disableXslEvaluate="true"
+        enableAssertions="true"/>
+  
+  <serialization method="xml" indent="yes"
+    saxon:indent-spaces="2" xmlns:saxon="http://saxon.sf.net/"/>
+  
+</configuration>
