@@ -69,7 +69,7 @@ fi
 # Supposing that $ADAPTATIONS_DIR/common/saxon/ stems from a privately hosted repo, it is added
 # to CLASSPATH by default, expecting saxon-license.lic to reside there.
 
-# if Saxon PE or EE: use a config. Also if a config is given.
+#use default config if no other is given
 
 if [ -z $CFG ]; then
     CFG=$DIR/config.xml
@@ -153,6 +153,8 @@ JAVA_OPTS="-Dfile.encoding=$JAVA_FILE_ENCODING -Dxml.catalog.files=$CATALOGS \
 -Djruby.compile.mode=OFF \
 -Dxml.catalog.staticCatalog=1 \
 -Djdk.xml.entityExpansionLimit=$ENTITYEXPANSIONLIMIT \
+-Djdk.xml.elementAttributeLimit=1000 \
+-Djdk.xml.totalEntitySizeLimit=999999 \
 -Duser.language=$UI_LANG \
 -Dxml.catalog.cacheUnderHome \
 $SYSPROPS \
