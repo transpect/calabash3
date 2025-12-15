@@ -182,6 +182,7 @@ if [ "$DEBUG" == "yes" ]; then
 	   echo "CFG: $CFG"
 fi
 
+
 $JAVA \
     -cp "$CP" \
 	$JAVA_OPTS \
