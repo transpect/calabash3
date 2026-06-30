@@ -6,6 +6,8 @@ case "`uname`" in
   MINGW*) mingw=true;;
 esac
 
+# set -x
+
 export JAVA=java
 
 JAVA_VERSION=$(java -version 2>&1 | sed -n ';s/.* version "\(.*\)\..*\..*\..*".*/\1/p;')
@@ -61,7 +63,7 @@ fi
 # or as an environment variable CFG. You also need to prepend the directory that contains
 # saxon-license.lic to CLASSPATH or add it to a saxon configuration as 
 # <configuration xmlns="http://saxon.sf.net/ns/configuration" licenseFileLocation="path-to-license/saxon-license.lic" 
-# The saxon configuration can be invoked via specifying it in the claabash config as @saxon-configuration in root element of <cc:xml-calabash>. 
+# The saxon configuration can be invoked via specifying it in the calabash config as @saxon-configuration in root element of <cc:xml-calabash>. 
 # Alternatively, particularly if your project also requires a standalone saxon, you may include
 # https://subversion.le-tex.de/common/saxon-pe96/ or another repo that contains Saxon EE as an external,
 # mounted to $PROJECT_DIR/saxon/ (convention over configuration).
@@ -75,6 +77,10 @@ if [ -z $CFG ]; then
     CFG=$DIR/config.xml
 fi
 
+# However, this configuration requires a commercial Saxon. If you want to use Saxon HE that is bundled with this distro,
+# you can invoke calabash.sh like this:
+# SAXON_JAR=calabash/distro/lib/Saxon-HE-12.9.jar CFG=none calabash/calabash.sh
+
 # SAXON_JAR is the path to a Saxon PE or EE jar file. Its name should match the following
 # regex: /[ehp]e\.jar$/ so that we can extract the substring 'ee', 'he', or 'pe':
 if [ -z $SAXON_JAR ]; then
@@ -87,7 +93,7 @@ if [ -z $SAXON_JAR ]; then
     elif [ -e $DIR/saxon/saxon-pe-12.7.jar ]; then
         SAXON_JAR=$DIR/saxon/saxon-pe-12.7.jar
     else
-	SAXON_JAR=$DISTRO/lib/Saxon-HE-12.8.jar
+	SAXON_JAR=$DISTRO/lib/Saxon-HE-12.9.jar
     fi
 fi
 
@@ -164,7 +170,11 @@ if [ $JAVA_VERSION -gt 11 ]; then
 JAVA_OPTS+="--add-opens java.base/sun.nio.ch=ALL-UNNAMED --add-opens java.base/java.io=ALL-UNNAMED"
 fi
 
-ADD_CFG="-c:$CFG"
+
+if [ $CFG != "none" ]; then
+    ADD_CFG="-c:$CFG"
+fi
+
 
 # show variables for debugging
 if [ "$DEBUG" == "yes" ]; then
