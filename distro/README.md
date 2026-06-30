@@ -1,4 +1,4 @@
-# XML Calabash version 3.0.30
+# XML Calabash version 3.0.49
 
 This release is believed to be fully conformant with XProc 3.1.
 

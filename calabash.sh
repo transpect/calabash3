@@ -39,7 +39,7 @@ function mingw_win_path() {
 DIR="$( real_dir "${BASH_SOURCE[0]}" )"
 
 EXT_BASE=$DIR/extensions
-CALABASH_VERSION=3.0.30
+CALABASH_VERSION=3.0.49
 DISTRO="$DIR/distro"
 
 if [ -z "$PROJECT_DIR" ]; then

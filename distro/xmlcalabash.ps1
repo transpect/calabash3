@@ -5,10 +5,10 @@
 
 # 1. Construct the classpath
 
-$cp = Join-Path -Path $PSScriptRoot -ChildPath "xmlcalabash-app-3.0.30.jar"
+$cp = Join-Path -Path $PSScriptRoot -ChildPath "xmlcalabash-app-3.0.49.jar"
 
 if (![System.IO.File]::Exists("$cp")) {
-  Write-Host "XML Calabash script did not find the 3.0.30 distribution jar"
+  Write-Host "XML Calabash script did not find the 3.0.49 distribution jar"
   Exit 1
 }
 
