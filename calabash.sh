@@ -84,16 +84,17 @@ fi
 # SAXON_JAR is the path to a Saxon PE or EE jar file. Its name should match the following
 # regex: /[ehp]e\.jar$/ so that we can extract the substring 'ee', 'he', or 'pe':
 if [ -z $SAXON_JAR ]; then
-	if [ -e $PROJECT_DIR/saxon/saxon-pe-12.7.jar ]; then
-		SAXON_JAR=$PROJECT_DIR/saxon/saxon-pe-12.7.jar
-    elif [ -e $PROJECT_DIR/saxon/saxon10ee.jar ]; then
-		SAXON_JAR=$PROJECT_DIR/saxon/saxon10ee.jar
-    elif [ -e $PROJECT_DIR/saxon/saxon10pe.jar ]; then
+    if [[ -e $PROJECT_DIR/saxon/saxon-pe-12.7.jar && -e $PROJECT_DIR/saxon/saxon-license.lic ]]; then
+	SAXON_JAR=$PROJECT_DIR/saxon/saxon-pe-12.7.jar
+    elif [[ -e $PROJECT_DIR/saxon/saxon10ee.jar && -e $PROJECT_DIR/saxon/saxon-license.lic ]]; then
+	SAXON_JAR=$PROJECT_DIR/saxon/saxon10ee.jar
+    elif [[ -e $PROJECT_DIR/saxon/saxon10pe.jar && -e $PROJECT_DIR/saxon/saxon-license.lic ]]; then
         SAXON_JAR=$PROJECT_DIR/saxon/saxon10pe.jar
-    elif [ -e $DIR/saxon/saxon-pe-12.7.jar ]; then
+    elif [[ -e $DIR/saxon/saxon-pe-12.7.jar && -e $PROJECT_DIR/saxon/saxon-license.lic ]]; then
         SAXON_JAR=$DIR/saxon/saxon-pe-12.7.jar
     else
 	SAXON_JAR=$DISTRO/lib/Saxon-HE-12.9.jar
+	CFG=none # we need to find a way to specify a Calabash config file when using Saxon HE
     fi
 fi
 
@@ -171,7 +172,7 @@ JAVA_OPTS+="--add-opens java.base/sun.nio.ch=ALL-UNNAMED --add-opens java.base/j
 fi
 
 
-if [ $CFG != "none" ]; then
+if [[ "$CFG" != "none" && -e "$CFG" ]]; then
     ADD_CFG="-c:$CFG"
 fi
 
