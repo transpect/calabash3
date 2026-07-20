@@ -39,7 +39,7 @@ function mingw_win_path() {
 DIR="$( real_dir "${BASH_SOURCE[0]}" )"
 
 EXT_BASE=$DIR/extensions
-CALABASH_VERSION=3.0.49
+CALABASH_VERSION=3.0.50
 DISTRO="$DIR/distro"
 
 if [ -z "$PROJECT_DIR" ]; then
@@ -64,6 +64,8 @@ fi
 # You can check out a directory with a compatible Saxon version in a parallel directory, that is:
 # If this directory is checked out as $PROJECT_DIR/calabash, the compatible Saxon needs to reside
 # in $PROJECT_DIR/saxon/
+# This Saxon may or may not have precedence over the included Saxon jar in distro/lib.
+# In case the included Saxon HE jar is used and not your own, you need to remove the HE jar in distro/lib. 
 # Currently there is no invocation tested with calabash and/or saxon configurations.
 # Invoking Saxon without license:
 # CFG=none calabash/calabash.sh info version

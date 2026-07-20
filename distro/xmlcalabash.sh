@@ -50,8 +50,8 @@ readlinkf_posix() {
 FQPATH=$(readlinkf_posix "$0")
 ROOT=`dirname "$FQPATH"`
 
-if [ ! -f "$ROOT/xmlcalabash-app-3.0.49.jar" ]; then
-    echo "XML Calabash script did not find the 3.0.49 distribution jar"
+if [ ! -f "$ROOT/xmlcalabash-app-3.0.50.jar" ]; then
+    echo "XML Calabash script did not find the 3.0.50 distribution jar"
     exit 1
 fi
 
@@ -66,7 +66,7 @@ for jar in "$ROOT/lib"/*.jar; do
     jarsArray+=( "$jar" )
 done
 
-CP="$ROOT/xmlcalabash-app-3.0.49.jar"
+CP="$ROOT/xmlcalabash-app-3.0.50.jar"
 for ((idx = 0; idx < ${#jarsArray[@]}; idx++)); do
     CP="$CP:${jarsArray[$idx]}"
 done
