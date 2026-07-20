@@ -59,6 +59,19 @@ if [ -f "$LOCALDEFS" ]; then
   source "$LOCALDEFS"
 fi
 
+# Saxon versions (2026-07-20):
+# This git repo does not contain a saxon directory any more.
+# You can check out a directory with a compatible Saxon version in a parallel directory, that is:
+# If this directory is checked out as $PROJECT_DIR/calabash, the compatible Saxon needs to reside
+# in $PROJECT_DIR/saxon/
+# Currently there is no invocation tested with calabash and/or saxon configurations.
+# Invoking Saxon without license:
+# CFG=none calabash/calabash.sh info version
+# Invoking a licensed Saxon (saxon-license.lic needs to reside in $PROJECT_DIR/saxon/):
+# CFG=none calabash/calabash.sh --licensed:true info version
+# Leaving $CFG blank will set it to $DIR/config.xml. CFG=none will bypass the Calabash configuration file.
+
+# Old info (need to sync it with the info above):
 # If you want to use Saxon PE or EE, you'll have to provide an xproc configuration called config.xml in a calabash directory
 # or as an environment variable CFG. You also need to prepend the directory that contains
 # saxon-license.lic to CLASSPATH or add it to a saxon configuration as 
