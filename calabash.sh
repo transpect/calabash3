@@ -10,7 +10,7 @@ esac
 
 export JAVA=java
 
-JAVA_VERSION=$(java -version 2>&1 | sed -n ';s/.* version "\(.*\)\..*\..*\..*".*/\1/p;')
+JAVA_VERSION=$(java -version 2>&1 | sed -n '1s/.*"\([0-9]\+\).*/\1/p')
 if [ -z "$JAVA_VERSION" ]; then
     JAVA_VERSION=$(java -version 2>&1 | sed -n ';s/.* version ".*\.\(.*\)\..*".*/\1/p;')
 fi
