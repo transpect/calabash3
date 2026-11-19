@@ -9,6 +9,7 @@ esac
 # set -x
 
 export JAVA=java
+export JAVA_TOOL_OPTIONS="-XX:-UseBASE64Intrinsics"
 
 JAVA_VERSION=$(java -version 2>&1 | sed -n '1s/.*"\([0-9]\+\).*/\1/p')
 if [ -z "$JAVA_VERSION" ]; then
