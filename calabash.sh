@@ -109,7 +109,7 @@ if [ -z $SAXON_JAR ]; then
     elif [[ -e $DIR/saxon/saxon-pe-12.7.jar && -e $PROJECT_DIR/saxon/saxon-license.lic ]]; then
         SAXON_JAR=$DIR/saxon/saxon-pe-12.7.jar
     else
-	SAXON_JAR=$DISTRO/lib/Saxon-HE-12.9.jar
+	SAXON_JAR=$DISTRO/lib/Saxon-HE-12.10.jar
 	CFG=none # we need to find a way to specify a Calabash config file when using Saxon HE
     fi
 fi
